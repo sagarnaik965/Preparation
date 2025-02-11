@@ -18,10 +18,25 @@ public class ReverseString {
         return new String(sArray);
     }
 
+    public static String removeWhiteSpaces(String input) {
+    	StringBuilder output = new StringBuilder();
+    	
+    	char[] charArray = input.toCharArray();
+    	
+    	for (char c : charArray) {
+    		if (!Character.isWhitespace(c))
+    			output.append(c);
+    	}
+    	
+    	return output.toString();
+    }
     public static void main(String[] args) {
-        String s = "hell";
-        String reversedS = reverseString(s);
+        String s = " h ell ";
         System.out.println("Original string: " + s);
+        
+        System.out.println("RemovedSpaces string: " + removeWhiteSpaces(s));
+        String reversedS = reverseString(s);
+      
         System.out.println("Reversed string: " + reversedS);
     }
 }
