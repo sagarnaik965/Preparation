@@ -1,5 +1,6 @@
 package com.javatechie.strings;
 
+//GitHub impl
 public class BasicStrings {
 
 	public static void main(String[] args) {
