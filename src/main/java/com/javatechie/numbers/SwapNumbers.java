@@ -1,5 +1,6 @@
 package com.javatechie.numbers;
 //check Fetch and pull different
+//Doing it already
 public class SwapNumbers {
 
 public static void main(String[] args) {
