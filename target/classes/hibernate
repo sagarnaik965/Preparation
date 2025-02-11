@@ -1,0 +1,66 @@
+Summary
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Feature					|	save() Method													| persist() Method
+Return Type				|	Serializable (identifier)										| void
+Execution Timing		|	Immediate (SQL INSERT executed immediately)						| Delayed (SQL INSERT executed on flush/commit)
+Transaction 			|	Requirement	Can be used outside of a transaction boundary		| Must be used within a transaction boundary
+Duplicate				|	Handling Always results in an SQL INSERT (possible duplicates)	| Ensures no duplication, throws an exception if entity exists
+Use Case				|	When you need the generated identifier immediately			 	| When you want to ensure no duplicates and are working within a transaction
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Transient Object:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Not associated with any database row.
+Not associated with any Hibernate session.
+Created using the new operator.
+Can be garbage collected if no references exist.
+
+Definition: A transient object is an instance of a class that has not yet been associated with a Hibernate session and does not have a representation in the database.
+Characteristics:
+No Database Representation: The object is not associated with any database table row.
+No Session Association: The object is not associated with any Hibernate session.
+Lifecycle: The object is created using the new operator and is not yet saved to the database.
+GC Eligible: The object can be garbage collected if there are no references to it.
+
+// Creating a transient object
+Employee emp = new Employee();
+emp.setName("John Doe");
+emp.setSalary(5000);
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Persistent Objects
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Definition: A persistent object is an instance of a class that is associated with a Hibernate session and has a corresponding row in the database.
+Characteristics:
+Database Representation: The object is associated with a row in the database.
+Session Association: The object is associated with an open Hibernate session.
+Lifecycle: The object becomes persistent when it is saved or retrieved within a session.
+Automatic Synchronization: Any changes made to the object are automatically synchronized with the database when the session is flushed or closed.
+Example:
+Java
+Session session = sessionFactory.openSession();
+session.beginTransaction();
+
+// Making the object persistent
+session.save(emp); // emp is now a persistent object
+
+session.getTransaction().commit();
+session.close();
+Associated with a database row.
+Associated with an open Hibernate session.
+Becomes persistent when saved or retrieved within a session.
+Changes are automatically synchronized with the database.
+
+
+
+ What is the difference between get() and load() methods in Hibernate?
+get() returns null if the object is not found, 				while load() throws an ObjectNotFoundException.
+get() always hits the database, 							while load() may return a proxy object without hitting the database.
+get() is used when you're not sure if the object exists, 	while load() is used when you're certain the object exists.
