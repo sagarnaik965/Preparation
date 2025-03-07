@@ -1,0 +1,41 @@
+A functional interface in programming, particularly in Java, is an interface that has exactly one abstract method. This concept is introduced to facilitate the use of lambda expressions and method references, making the code more concise and readable.
+
+### Why We Need Functional Interfaces:
+1. **Lambda Expressions**: Functional interfaces enable the use of lambda expressions, which are a way to write anonymous methods in a more concise and readable manner.
+2. **Code Readability and Maintainability**: By using functional interfaces and lambda expressions, the code becomes more readable and easier to maintain.
+3. **Functional Programming**: It supports functional programming principles in Java, allowing you to treat functions as first-class citizens.
+4. **API Design**: Helps in designing APIs that are more flexible and easier to use.
+
+### Example:
+Consider an example in Java where you have a functional interface and a lambda expression:
+
+```java
+@FunctionalInterface
+interface MyFunctionalInterface {
+    void execute();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface funcInterface = () -> System.out.println("Executing...");
+        funcInterface.execute();
+    }
+}
+```
+
+In this example, `MyFunctionalInterface` is a functional interface with a single abstract method 
+`execute`. The lambda expression `() -> System.out.println("Executing...")` 
+provides an implementation for this method.
+
+::Examples
+
+Predicate<T>
+
+Abstract Method: boolean test(T t)
+Description: Represents a predicate (boolean-valued function) of one argument.
+Example Usage: Predicate<Integer> isEven = num -> num % 2 == 0;
+Consumer<T>
+
+Abstract Method: void accept(T t)
+Description: Represents an operation that accepts a single input argument and returns no result.
+Example Usage: Consumer<String> printMessage = message -> System.out.println("Message: " + message);

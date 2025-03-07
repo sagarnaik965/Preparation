@@ -1,6 +1,7 @@
 package com.javatechie.numbers;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Arrays {
 
@@ -21,19 +22,65 @@ public class Arrays {
 				System.out.print(num + " ");
 			}
 		}
+
 	}
+	public static int maxNearest=0;
+	private static int  MaxNearestNumber(int[] numbers, int target) {
+		// TODO Auto-generated method stub
+			
+			java.util.Arrays.sort(numbers);
+			for(int i=0;i<numbers.length ;i++)
+			{
+				if(numbers[i]> target)
+				{
+					maxNearest = numbers[i];
+					break;
+				}
+					
+			}
+			System.out.println("Largest Nearest  "+maxNearest);
+			return maxNearest;
+	}
+	
+	
+	private static void MaxSmallestNumber(int[] numbers, int target) {
+		// TODO Auto-generated method stub
+		int max = numbers[0];
+		for (int i = 0; i < numbers.length; i++) {
+			if(numbers[i] < target && max < numbers[i] ) {
+				max = numbers[i];
+			}
+		}
+		System.out.println("Smallest Nearest "+max);
+		
+		
+	}
+
+	
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int[] numbers = { 1, 3, 5, 7, 9, 9 };
-		removeDuplicates(numbers);
-		System.out.println(" ");
-		if (isSorted(numbers)) {
-			System.out.println("The array is sorted.");
-		} else {
-			System.out.println("The array is not sorted.");
-		}
+		int[] numbers = { 1, 33, 5, 7, 19, 9 };
+		int target = 7;
+		
+
+		// find Max nearest number from array of given target
+		MaxNearestNumber(numbers, target);
+		
+		// find Max nearest number from array of given target
+		MaxSmallestNumber(numbers, target);
+		
+		
+
+		//System.out.println(" ");
+		/*
+		 * if (isSorted(numbers)) { System.out.println("The array is sorted."); } else {
+		 * System.out.println("The array is not sorted."); }
+		 */
 	}
 
+	
 }
