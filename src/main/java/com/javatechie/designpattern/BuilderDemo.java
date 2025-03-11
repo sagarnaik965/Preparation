@@ -1,5 +1,9 @@
 package com.javatechie.designpattern;
 
+//✅ StringBuilder in Java → new StringBuilder().append().toString()
+//✅ Lombok → @Builder annotation creates builder automatically
+//✅ HTTP Requests → Request.Builder().header().build()
+//✅ Complex Configurations → When creating objects with many options
 //Step 1: Define the Class and Builder (Static Inner Class)
 class User {
  private String firstName;
