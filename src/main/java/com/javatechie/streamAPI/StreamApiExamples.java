@@ -1,4 +1,4 @@
-package streamAPI;
+package com.javatechie.streamAPI;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class StreamApiExamples {
 	public static void main(String[] args) {
 		List<Employee> employees = Arrays.asList(new Employee(1, "Alice", 30, "HR", 50000),
 				new Employee(2, "Bob", 25, "Engineering", 60000), new Employee(3, "Charlie", 35, "Engineering", 70000),
-				new Employee(4, "David", 40, "HR", 80000), new Employee(5, "Edward", 45, "Finance", 90000));
+				new Employee(4, "David", 40, "HR", 80000), new Employee(5, "Edward", 45, "Finance", 90000),new Employee(6, "Khemu", 80, "HR", 100000));
 
 		// Filter employees with salary greater than 60000
 		List<Employee> highSalaryEmployees = employees.stream().filter(e -> e.getSalary() > 60000)
@@ -104,6 +104,13 @@ public class StreamApiExamples {
 		// Check if any employee is older than 50
 		boolean anyEmployeeOlderThan50 = employees.stream().anyMatch(e -> e.getAge() > 50);
 		System.out.println("\nAny employee older than 50: " + anyEmployeeOlderThan50);
+		
+		Optional<Employee> employeeOlderThan50 = employees.stream()
+		        .filter(e -> e.getAge() > 50)
+		        .findFirst(); // or findAny()
+		
+		employeeOlderThan50.ifPresent(e -> 
+	    System.out.println("By Optional Employee older than 50: " + e.getName()));
 
 		// Check if all employees are older than 20
 		boolean allEmployeesOlderThan20 = employees.stream().allMatch(e -> e.getAge() > 20);

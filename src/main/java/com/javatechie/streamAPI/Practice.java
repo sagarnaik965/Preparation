@@ -1,4 +1,4 @@
-package streamAPI;
+package com.javatechie.streamAPI;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +33,6 @@ public class Practice {
 	private static void findSecSmallestLargest(List<Integer> list) {
 		// TODO Auto-generated method stub
 		Integer secondSmallest = list.stream().distinct().sorted().skip(1).findFirst().orElse(null);
-
 		// Find the second largest element
 		Integer secondLargest = list.stream().distinct().sorted((a, b) -> Integer.compare(b, a)).skip(1).findFirst()
 				.orElse(null);
