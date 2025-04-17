@@ -1,6 +1,11 @@
 package com.javatechie.streamAPI;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 class Employee {
@@ -48,10 +53,31 @@ class Employee {
 
 public class StreamApiExamples {
 	public static void main(String[] args) {
-		List<Employee> employees = Arrays.asList(new Employee(1, "Alice", 30, "HR", 50000),
+		List<Employee> employees = Arrays.asList(new Employee(1, "Magan", 30, "HR", 50000),
 				new Employee(2, "Bob", 25, "Engineering", 60000), new Employee(3, "Charlie", 35, "Engineering", 70000),
 				new Employee(4, "David", 40, "HR", 80000), new Employee(5, "Edward", 45, "Finance", 90000),new Employee(6, "Khemu", 80, "HR", 100000));
 
+		
+		Map<String, Integer> deptWiseEmpCount = new HashMap<>();
+		for (Employee inp : employees) {
+			deptWiseEmpCount.put(inp.getDepartment(), deptWiseEmpCount.getOrDefault(inp.getDepartment(), 0)+1);
+		}
+		System.out.println(deptWiseEmpCount+"\n");
+		
+		//using java 8 
+		Map<String, Long> mapOfDeptCOunt=employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.counting()));
+		System.out.println("emp dept Count : "+mapOfDeptCOunt+"\n");
+		
+		
+		List<Employee> empListFilter= employees.stream().filter(t -> t.getName().startsWith("M")).collect(Collectors.toList());
+		List<String> empListFilterOnlyName= employees.stream().map(t-> t.getName()).filter(t ->t.startsWith("M")).collect(Collectors.toList());
+		System.out.println("Filtering empList : "+empListFilter +"\n");
+		System.out.println("Filtering empList : "+empListFilterOnlyName +"\n");
+		
+		
+		
+		
+		
 		// Filter employees with salary greater than 60000
 		List<Employee> highSalaryEmployees = employees.stream().filter(e -> e.getSalary() > 60000)
 				.collect(Collectors.toList());
