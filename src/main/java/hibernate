@@ -64,3 +64,5 @@ Changes are automatically synchronized with the database.
 get() returns null if the object is not found, 				while load() throws an ObjectNotFoundException.
 get() always hits the database, 							while load() may return a proxy object without hitting the database.
 get() is used when you're not sure if the object exists, 	while load() is used when you're certain the object exists.
+
+

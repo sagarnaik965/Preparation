@@ -58,3 +58,13 @@ public class ComparableAndComparatorExample {
      System.out.println("Sorted by name (Comparator): " + students);
  }
 }
+
+//✅ Key Differences
+//Feature 					Comparable 				Comparator
+//Interface in 				java.lang				java.util
+//Method 						compareTo()				compare()
+//Sort logic					Natural ordering		Custom or multiple orders
+//Modify class?				Yes						No
+//Usage						Collections.sort(list)	Collections.sort(list, comparator)
+
+
